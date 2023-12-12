@@ -1,0 +1,37 @@
+from datetime import datetime,timedelta
+
+from airflow import DAG
+from airflow.operators.python import PythonOperator
+from airflow.operators.empty import EmptyOperator
+from apple_app import run_app
+
+# аргументы дага по умолчанию
+default_args = {
+    "owner": "BS",
+    "retries": 1,
+    "retry_delay": timedelta(minutes=1),
+}
+
+
+
+with DAG(
+    default_args = default_args,
+    dag_id = '03_Apple_increment',
+    description = 'Сбор данных об акциях Apple за предыдущий день',
+    start_date = datetime(2023,12,10),
+    schedule_interval="0 21 * * 2-6",
+    tags=["python","BS"],
+    catchup=False
+
+) as dag:
+    
+    start = EmptyOperator(task_id='start')
+    end = EmptyOperator(task_id='end')
+
+    Apple_increment_data = PythonOperator(
+    task_id='Apple_increment_data',
+    python_callable=run_app,
+    dag=dag)
+
+
+    start >> Apple_increment_data >> end

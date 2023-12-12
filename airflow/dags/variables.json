@@ -1,0 +1,12 @@
+{
+    "base_url": "https://www.alphavantage.co/query",
+    "conn_name": "conn1",
+    "function": "TIME_SERIES_INTRADAY",
+    "interval": "15min",
+    "symbol_apple": "AAPL",
+    "symbol_ibm": "IBM",
+    "symbol_tesla": "TSLA",
+    "apikey": "LNIOHBURHJO84INU",
+    "outputsize": "full"
+    
+}

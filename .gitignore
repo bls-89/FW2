@@ -1,0 +1,4 @@
+/volume
+/postgres
+/airflow/logs
+/airflow/plugins

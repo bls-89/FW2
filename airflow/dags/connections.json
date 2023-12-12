@@ -1,0 +1,12 @@
+{
+  "conn1": {
+    "conn_type": "postgres",
+    "description": "Подключение к базе данных",
+    "login": "postgres",
+    "password": "password",
+    "host": "host.docker.internal",
+    "port": 5430,
+    "schema": "test",
+    "extra": "{}"
+ }
+}
